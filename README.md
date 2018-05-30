@@ -3375,6 +3375,19 @@ This guide is available in other languages too. See [Translation](#translation)
     }
     ```
 
+  <a name="accessors--fetch"></a><a name="23.5"></a>
+  - [24.5](#accessors--fetch) When accessing resources across a network (e.g. grabbing something from our server), please use the `fetch` API
+
+    ## Did you know there's a whole new API for fetching stuff off the web? We **do not** need to require on JQuery's AJAX functions anymore to have quality ways of interacting with the web and grabbing resources dynamically in real-time from various servers online. Instead, we have a first class element that lives in the JavaScript world that we can now use.
+
+    ## You will be expected to use `fetch` for server queries at Rubikon (using `async/await`). If you want to use something else (e.g. `axios`) you gotta make the case for it and convince me. :)
+
+    David Walsh's blog is great for all kinds of JavaScript learnings, including this one here: https://davidwalsh.name/fetch
+
+    Here's how to use `fetch` with `async/await`: https://www.javascriptjanuary.com/blog/an-introduction-to-async-await
+
+
+
 **[⬆ back to top](#table-of-contents)**
 
 ## Events
@@ -3510,6 +3523,8 @@ This guide is available in other languages too. See [Translation](#translation)
 
     > Why? [They are not finalized](https://tc39.github.io/process-document/), and they are subject to change or to be withdrawn entirely. We want to use JavaScript, and proposals are not JavaScript yet.
 
+## **Note** - several short sections below, you'll find some additional ES7/ES8 features that I'm down with everybody using. :) Everything above here is what Airbnb suggests - and I'd highly encourage you to take a look at the examples they give (and to find the relevant MDN page if you want to learn more about it).
+
 **[⬆ back to top](#table-of-contents)**
 
 ## Standard Library
@@ -3573,7 +3588,7 @@ This guide is available in other languages too. See [Translation](#translation)
     - Whenever you fix a bug, _write a regression test_. A bug fixed without a regression test is almost certainly going to break again in the future.
 
   <a name="testing--seriously-for-real"></a><a name="28.3"></a>
-  - [30.2](#testing--for-real) **No, but like for real**:
+  - [30.3](#testing--for-real) **No, but like for real**:
     ## YOU BETTER BE WRITING GOOD TEST CODE!!!
 
 ## ES2016 / ES2017
@@ -3599,7 +3614,7 @@ This guide is available in other languages too. See [Translation](#translation)
 
   <a name="es7--exponentiation"></a>
   - [31.2](#es7--exponentiation) **Exponentiation**:
-    With JavaScript, you can now have an exponent operator. Woooo! https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Arithmetic_Operators#Exponentiation_(**)
+    With JavaScript, you can now have an exponent operator. Woooo! https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Arithmetic_Operators#Exponentiation_(**) *(this was mentioned above by Airbnb, but I'm mentioning it again)*
 
     ```javascript
     2 ** 2;
@@ -3612,9 +3627,94 @@ This guide is available in other languages too. See [Translation](#translation)
     // 16
     ```
 
-  <a name="testing--seriously-for-real"></a><a name="28.3"></a>
-  - [30.2](#testing--for-real) **No, but like for real**:
-    ## YOU BETTER BE WRITING GOOD TEST CODE!!!
+  <a name="es8--pad-strings"></a>
+  - [31.3](#es8--pad-strings) **Pad Strings**:
+    You can now pad the beginning or end of a string to make it reach a desired length! The default is " " (there's a space there if you couldn't tell), but you can pass any string you'd like to use for padding purposes. The functions will repeat the string in question until the string as a whole reaches the desired length. If that is not possible (string is too long), it'll get truncate it.
+    - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/padStart
+    - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/padEnd
+
+    ```javascript
+    // some examples using padEnd()
+    'abc'.padEnd(10);          // "abc       "
+    'abc'.padEnd(10, "foo");   // "abcfoofoof"
+    'abc'.padEnd(6, "123456"); // "abc123"
+    'abc'.padEnd(1);           // "abc"
+    ```
+
+  <a name="es8--object-arrays"></a>
+  - [31.4](#es8--object-arrays) **Object.values() & Object.entries()**:
+    You can now easily generate an array of the values in an Object, or a 2D array with `[key, value]` pairs from an object.
+    - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/values
+    - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/entries
+
+  <a name="es8--object-property-descriptors"></a>
+  - [31.5](#es8--object-property-descriptors) **Object.getOwnPropertyDescriptors()**:
+    This gives you descriptors around all the properties of an object. I can't imagine any particular useful use cases for this function for us... but it's here just so you know about it!! See here for more info: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/getOwnPropertyDescriptors
+
+    ```javascript
+    const obj = {
+      get es7() { return 777; },
+      get es8() { return 888; }
+    };
+
+    Object.getOwnPropertyDescriptors(obj);
+    // {
+    //   es7: {
+    //     configurable: true,
+    //     enumerable: true,
+    //     get: function es7(){}, //the getter function
+    //     set: undefined
+    //   },
+    //   es8: {
+    //     configurable: true,
+    //     enumerable: true,
+    //     get: function es8(){}, //the getter function
+    //     set: undefined
+    //   }
+    // }
+    ```
+  <a name="es8--trailing-commas"></a>
+  - [31.6](#es8--trailing-commas) **Trailing Commas**:
+    ES2017 lets you have trailing commas in function parameters. I feel weird about that, and would prefer it if you **did not** use this feature. More info about trailing commas generally in JavaScript & JSON here: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Trailing_commas
+
+  <a name="es8--async-await"></a>
+  - [31.7](#es8--async-await) **Async/Await**:
+    This is the most important addition of ES2017 (and ES2016 for that matter). This makes such a difference in the readability & maintainability of asynchronous code!
+
+    ## **YOU ARE EXPECTED TO UNDERSTAND `ASYNC/AWAIT` AND USE IT IF YOU ARE WRITING ASYNCHRONOUS CODE!!!**
+    ## **YOU ARE EXPECTED TO UNDERSTAND `ASYNC/AWAIT` AND USE IT IF YOU ARE WRITING ASYNCHRONOUS CODE!!!**
+    ## **YOU ARE EXPECTED TO UNDERSTAND `ASYNC/AWAIT` AND USE IT IF YOU ARE WRITING ASYNCHRONOUS CODE!!!**
+    ## **YOU ARE EXPECTED TO UNDERSTAND `ASYNC/AWAIT` AND USE IT IF YOU ARE WRITING ASYNCHRONOUS CODE!!!**
+    ## **YOU ARE EXPECTED TO UNDERSTAND `ASYNC/AWAIT` AND USE IT IF YOU ARE WRITING ASYNCHRONOUS CODE!!!**
+    ## **YOU ARE EXPECTED TO UNDERSTAND `ASYNC/AWAIT` AND USE IT IF YOU ARE WRITING ASYNCHRONOUS CODE!!!**
+    ## **YOU ARE EXPECTED TO UNDERSTAND `ASYNC/AWAIT` AND USE IT IF YOU ARE WRITING ASYNCHRONOUS CODE!!!**
+    ## **YOU ARE EXPECTED TO UNDERSTAND `ASYNC/AWAIT` AND USE IT IF YOU ARE WRITING ASYNCHRONOUS CODE!!!**
+    ## **YOU ARE EXPECTED TO UNDERSTAND `ASYNC/AWAIT` AND USE IT IF YOU ARE WRITING ASYNCHRONOUS CODE!!!**
+    ## **YOU ARE EXPECTED TO UNDERSTAND `ASYNC/AWAIT` AND USE IT IF YOU ARE WRITING ASYNCHRONOUS CODE!!!**
+    ## **YOU ARE EXPECTED TO UNDERSTAND `ASYNC/AWAIT` AND USE IT IF YOU ARE WRITING ASYNCHRONOUS CODE!!!**
+    ## **YOU ARE EXPECTED TO UNDERSTAND `ASYNC/AWAIT` AND USE IT IF YOU ARE WRITING ASYNCHRONOUS CODE!!!**
+    ## **YOU ARE EXPECTED TO UNDERSTAND `ASYNC/AWAIT` AND USE IT IF YOU ARE WRITING ASYNCHRONOUS CODE!!!**
+    ## **YOU ARE EXPECTED TO UNDERSTAND `ASYNC/AWAIT` AND USE IT IF YOU ARE WRITING ASYNCHRONOUS CODE!!!**
+    ## **YOU ARE EXPECTED TO UNDERSTAND `ASYNC/AWAIT` AND USE IT IF YOU ARE WRITING ASYNCHRONOUS CODE!!!**
+    ## **YOU ARE EXPECTED TO UNDERSTAND `ASYNC/AWAIT` AND USE IT IF YOU ARE WRITING ASYNCHRONOUS CODE!!!**
+    ## **YOU ARE EXPECTED TO UNDERSTAND `ASYNC/AWAIT` AND USE IT IF YOU ARE WRITING ASYNCHRONOUS CODE!!!**
+    ## **YOU ARE EXPECTED TO UNDERSTAND `ASYNC/AWAIT` AND USE IT IF YOU ARE WRITING ASYNCHRONOUS CODE!!!**
+    ## **YOU ARE EXPECTED TO UNDERSTAND `ASYNC/AWAIT` AND USE IT IF YOU ARE WRITING ASYNCHRONOUS CODE!!!**
+    ## **YOU ARE EXPECTED TO UNDERSTAND `ASYNC/AWAIT` AND USE IT IF YOU ARE WRITING ASYNCHRONOUS CODE!!!**
+
+    ## thanks for obliging that massive amount of text
+
+    ## I really just wanted to get your attention if you were scrolling through...
+
+    So anyway... now that I have your attention... yes... `async/await`... game changer... and you better know it if you're writing asynchronous code!!!
+
+    Here's a variety of resources to show you how to approach it:
+
+    - Introduction to `async/await` - does it by building examples using `fetch` & `promises`, and then eventually switching to `async/await` so you can see the difference. https://www.javascriptjanuary.com/blog/an-introduction-to-async-await
+    - General article on `async/await` (includes link to article on `promises`, which are a pre-requesite for understanding `async/await`): https://codeburst.io/javascript-es-2017-learn-async-await-by-example-48acc58bad65
+    - "6 reasons why javascript's `async/await` blows promises away": https://hackernoon.com/6-reasons-why-javascripts-async-await-blows-promises-away-tutorial-c7ec10518dd9
+
+    All of the above resources are useful for understanding `async/await`. I would encourage you to read all three. Make sure you understand how `promise.all` works before you stop reading about `async/await` (not every article above explains what that is).
 
 
 **[⬆ back to top](#table-of-contents)**
