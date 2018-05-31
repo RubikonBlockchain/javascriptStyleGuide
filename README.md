@@ -15,9 +15,7 @@ Since both JSX & CSS-in-JavaScript live in JavaScript, amke sure you're familiar
 
  > **Note**: this guide assumes you are using [Babel](https://babeljs.io), and requires that you use [babel-preset-airbnb](https://npmjs.com/babel-preset-airbnb) or the equivalent. It also assumes you are installing shims/polyfills in your app, with [airbnb-browser-shims](https://npmjs.com/airbnb-browser-shims) or the equivalent.
 
-[![Downloads](https://img.shields.io/npm/dm/eslint-config-airbnb.svg)](https://www.npmjs.com/package/eslint-config-airbnb)
-[![Downloads](https://img.shields.io/npm/dm/eslint-config-airbnb-base.svg)](https://www.npmjs.com/package/eslint-config-airbnb-base)
-[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/airbnb/javascript?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)-->
+-->
 
 This guide is available in other languages too. See [Translation](#translation)
 
@@ -53,6 +51,7 @@ This guide is available in other languages too. See [Translation](#translation)
   1. [ECMAScript 6+ (ES 2015+) Styles](#ecmascript-6-es-2015-styles)
   1. [Standard Library](#standard-library)
   1. [Testing](#testing)
+  1. [ES2016 / ES2017](#es2016--es2017)
   1. [Performance](#performance)
   1. [Resources](#resources)
   1. [In the Wild](#in-the-wild)
@@ -3591,13 +3590,15 @@ This guide is available in other languages too. See [Translation](#translation)
   - [30.3](#testing--for-real) **No, but like for real**:
     ## YOU BETTER BE WRITING GOOD TEST CODE!!!
 
+**[⬆ back to top](#table-of-contents)**
+
 ## ES2016 / ES2017
 
   You're encouraged to use features from ES2016 & ES2017 (AKA ES7 & ES8). Below is a quick synopsis of all of them. If there are patterns that we'd like to avoid, a `good / bad` example a la all the airbnb examples above will be created.
 
   **Please make sure you read through the wonderful MDN references linked for each of the things below to fully understand aspects of the features below that I do not touch on, including all the potential gotchas!** *(thank you mozilla!!)*
 
-  <a name="es7--includes"></a>
+  <a name="es7--includes"></a><a name="29.1"></a>
   - [31.1](#es7--includes) **Array Includes**
 
     You can now easily search to see whether or not an array includes a thing! https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/includes
