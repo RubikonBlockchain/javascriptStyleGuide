@@ -3604,12 +3604,12 @@ This guide is available in other languages too. See [Translation](#translation)
     You can now easily search to see whether or not an array includes a thing! https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/includes
 
     ```javascript
-    let poopyArray = ['poop', 'poo'];
+    let funnyArray = ['giggle', 'chortle'];
 
-    poopyArray.includes('poo');
+    funnyArray.includes('giggle');
     // true
 
-    poopyArray.includes('poopy');
+    funnyArray.includes('laugh');
     //false
     ```
 
