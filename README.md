@@ -3376,7 +3376,7 @@ This guide is available in other languages too. See [Translation](#translation)
 
     ## get functions should *EXCLUSIVELY* return values, and do nothing else. If a get function needs to get a value from a foreign location (e.g. a server call), the get function's title should explicitly make this clear.
 
-    ##Likewise, a setter function should *exclusively* set a variable, and make it clear if it's alterint something on a server.
+    ## Likewise, a setter function should *exclusively* set a variable, and make it clear if it's alterint something on a server.
 
   <a name="accessors--fetch"></a><a name="23.5"></a>
   - [24.5](#accessors--fetch) When accessing resources across a network (e.g. grabbing something from our server), please use the `fetch` API
