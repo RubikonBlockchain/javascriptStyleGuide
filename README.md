@@ -7,6 +7,7 @@ This styleguide has been forked from Airbnb, who have a mostly fantastic approac
 The following are links to other styleguides that are relevant to our needs:
 
   - [React](react/)
+  - [React Testing (i.e. Jest + Enzyme)](react-testing/)
   - [CSS-in-JavaScript](css-in-javascript/)
 
 Since both JSX & CSS-in-JavaScript live in JavaScript, amke sure you're familiar with the contents of this style guide first. :)
