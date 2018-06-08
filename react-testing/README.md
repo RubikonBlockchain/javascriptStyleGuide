@@ -1,4 +1,4 @@
-# Eventbrite Rubikon React Testing Best Practices
+# E̶v̶e̶n̶t̶b̶r̶i̶t̶e̶ Rubikon React Testing Best Practices
 
 Guidelines and best practices used by Eventbrite to provide consistency and prevent errors in testing React components. This does not cover testing utility/helper functions (including Redux reducers) that are used in conjunction with React as those follow general testing guidelines.
 
