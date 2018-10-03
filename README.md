@@ -22,6 +22,7 @@ This guide is available in other languages too. See [Translation](#translation)
 
 ## Table of Contents
 
+  1. [Rubikon Additions](#rubikon-additions)
   1. [Types](#types)
   1. [References](#references)
   1. [Objects](#objects)
@@ -62,6 +63,35 @@ This guide is available in other languages too. See [Translation](#translation)
   1. [Contributors](#contributors)
   1. [License](#license)
   1. [Amendments](#amendments)
+
+## Rubikon Additions
+
+When importing from an index file, always use the directory name.
+
+    // good
+    import { Foo } from '../FooBarBaz';
+
+    // bad
+    import { Foo } from '..';
+
+Also consider importing from a module's file directly instead of from an index file.
+
+    // good
+    import { Foo } from '../FooBarBaz';
+
+    // also good
+    import Foo from '../FooBarBaz/Foo';
+
+Consider using aliases or re-organizing the directory structure when nesting becomes deep.
+
+    // maybe time to reorganize or to use an alias
+    import someModule from '../../../../../../someModule';
+
+Ensure that every test has a `describe` or an `it` that passes one of these jest filters:
+
+    jest -t ^unitTest
+    jest -t ^integrationTest
+    jest -t ^endToEndTest
 
 ## Types
 
