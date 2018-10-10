@@ -4,11 +4,18 @@
 
 ## Table of Contents
 
+1. [Rubikon Additions](#rubikon-additions)
 1. [Naming](#naming)
 1. [Ordering](#ordering)
 1. [Nesting](#nesting)
 1. [Inline](#inline)
 1. [Themes](#themes)
+
+## Rubikon Additions
+
+- Use `!important` more liberally than you would in writing CSS, SCSS, or LESSC.
+
+    > Avoiding `!important` in CSS et al enables later developers to *cascade* over previous developer's rules. This is not as important with CSS-in-JavaScript, because *all* of a component's styles will live in its component.
 
 ## Naming
 
