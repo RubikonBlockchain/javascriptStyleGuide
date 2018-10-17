@@ -73,7 +73,7 @@ When importing from an index file, always use the directory name.
     import { Foo } from '../FooBarBaz';
 
     // bad
-    import { Foo } from '..';
+    import { Foo } from '.';
 
 Also consider importing from a module's file directly instead of from an index file.
 
